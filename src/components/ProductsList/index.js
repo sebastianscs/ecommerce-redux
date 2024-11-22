@@ -2,10 +2,10 @@
 import React from 'react';
 import { ProductsList, Product } from "./styles";
 import { useSelector, useDispatch } from 'react-redux';
-import { addToCart } from '../../actions/actions';
+import { addToCart } from '../../state/store.slice';
 
 const Products = () => {
-    const products = useSelector(state => state.products);
+    const products = useSelector(state => state.products.products);
     const dispatch = useDispatch();
 
     const handleAddToCart = (product) => {
@@ -15,7 +15,7 @@ const Products = () => {
     return(
         <>
             <ProductsList>
-                {products.map(product => (
+                {products && products.map(product => (
                     <Product key={product.id}>
                         <img src={product.image} alt={product.image}/>
                         <h2>{ product.name }</h2>

@@ -47,6 +47,16 @@ const Product = styled.section`
             transform: scale(1.03);
         }
     }
+    @media screen and (max-width:480px){
+        width: 100%;
+        h2{
+            font-size:0.9rem;
+        }
+    }
+    @media screen and (max-width:820px){
+        width: 100%;
+        
+    }
 `
 export {
     ProductsList,
