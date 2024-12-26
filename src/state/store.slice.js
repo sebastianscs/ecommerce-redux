@@ -38,6 +38,7 @@ const productSlice = createSlice({
             {id:20, name:"Camisa Yu-Gi-Oh", price:180, image:yugi},
         ],
         cart:[],
+        totalCart: 0,
         users:[],
         currentUser: null,
     },
@@ -52,23 +53,28 @@ const productSlice = createSlice({
             } else {
                 // Si no está en el carrito, lo añade con cantidad inicial de 1
                 state.cart.push({ ...action.payload, quantity: 1, realPrice: action.payload.price });
-                
             }
+            state.totalCart = state.cart.reduce((total, product) => total + product.realPrice * product.quantity, 0);
         },
         updateQuantity: (state, action) => {
-            const product = state.cart.find((product) => product.id === action.payload.productId);
+            
+            const { productId, quantity } = action.payload
+            const product = state.cart.find((product) => product.id === productId);
             if (product) {
-                product.quantity = action.payload.quantity;
+                product.quantity = quantity;
+                product.price = product.realPrice * product.quantity;
             }
+            state.totalCart = state.cart.reduce((total, product) => total + product.realPrice * product.quantity, 0);
         },
         buyAllProducts: (state, action) => {
             state.cart = []
+            state.totalCart = 0;
         },
         removeFromCart: (state, action) => {
             state.cart = state.cart.filter(product => product.id !== action.payload);
         },
         registerUser: (state, action) => {
-            const existingUser = state.users.find((user) => user.id === action.payload.id);
+            const existingUser = state.users.find((user) => user.username === action.payload.username);
             
             if (existingUser) {
                 // If the user existing
@@ -90,6 +96,6 @@ const productSlice = createSlice({
 });
 
 
-export const { addToCart, removeFromCart, registerUser, login, logout, buyAllProducts } = productSlice.actions;
+export const { addToCart, removeFromCart, updateQuantity, registerUser, login, logout, buyAllProducts } = productSlice.actions;
 const { reducer: productsReducer } = productSlice;
 export default productsReducer;

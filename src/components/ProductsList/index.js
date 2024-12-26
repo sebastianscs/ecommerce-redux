@@ -14,13 +14,13 @@ const Products = () => {
 
     return(
         <>
-            <ProductsList>
+            <ProductsList aria-label='Listado de productos'>
                 {products && products.map(product => (
-                    <Product key={product.id}>
+                    <Product key={product.id} id={product.name}>
                         <img src={product.image} alt={product.image}/>
                         <h2>{ product.name }</h2>
                         <p>$ { product.price }.00</p>
-                        <button onClick={() => handleAddToCart(product)}>Agregar al carrito :3</button>
+                        <button role='button' onClick={() => handleAddToCart(product)}>Agregar al carrito :3</button>
                     </Product>   
                 ))}
             </ProductsList>

@@ -11,30 +11,35 @@ const Checkout = () => {
     const navigate = useNavigate();
     const handleBuyAllProducts = () => {
         alert('Gracias por su compra :3')
-        navigate('/products');
-        dispatch(buyAllProducts());
+        try{
+            navigate('/products');
+            dispatch(buyAllProducts());
+        } catch (err){
+            console.err(err)
+        }
+        
     }
     return(
         <>
-            <CheckoutContainer>
-                <CheckoutTitles>
-                    <Titles>Producto</Titles>
-                    <Titles>Precio</Titles>
-                    <Titles>Cantidad</Titles>
+            <CheckoutContainer aria-label="Detalles de compra">
+                <CheckoutTitles aria-label="Titulos del detalles de la compra">
+                    <Titles id="Producto">Producto</Titles>
+                    <Titles id="Precio">Precio</Titles>
+                    <Titles id="Cantidad">Cantidad</Titles>
                 </CheckoutTitles>
                 {cart.map(product => (
-                    <CheckoutProduct key={product.id}>
+                    <CheckoutProduct key={product.id} id={product.name}>
                         <ProductText>{product.name}</ProductText>
                         <ProductText>$ {product.realPrice}</ProductText>
                         <ProductText>{product.quantity}</ProductText>
                     </CheckoutProduct>
                 ))}
-                <CheckoutTotalContainer>
+                <CheckoutTotalContainer aria-label="Total de compra">
                     <CheckoutTotalTitle>Total</CheckoutTotalTitle>
                     <CheckoutTotal>${total}</CheckoutTotal>
                 </CheckoutTotalContainer>
 
-                <CheckoutButton onClick={handleBuyAllProducts}>Comprar</CheckoutButton>
+                <CheckoutButton onClick={handleBuyAllProducts} aria-label="Boton de compra" role="button">Comprar</CheckoutButton>
             </CheckoutContainer>
 
             

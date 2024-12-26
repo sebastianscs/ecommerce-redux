@@ -29,11 +29,13 @@ const Login = () => {
     return(
         <>
             <ContainerLogin>
+                
                 <LabelLogin >Usuario</LabelLogin>
                 <InputLogin 
                     placeholder='Usuario'
                     onChange={(e) => setUsername(e.target.value)}
                     name="username"
+                    aria-label="Ingresar usuario"
                     value={username}
                     />
                 <LabelLogin >Contraseña</LabelLogin>
@@ -41,13 +43,14 @@ const Login = () => {
                     placeholder='Contraseña' 
                     onChange={(e) => setPassword(e.target.value)}
                     name="password"
+                    aria-label="Ingresar contraseña"
                     type="password"
                     value={password}
                     />
                 
                 <ButtonContainer>
-                    <ButtonLogin onClick={handleLogin}>Iniciar Sesión :3</ButtonLogin>
-                    <ButtonLogin onClick={handleRegister}>Registrarse</ButtonLogin>
+                    <ButtonLogin aria-label='Boton de inicio de sesion' role="button" onClick={handleLogin}>Iniciar Sesión :3</ButtonLogin>
+                    <ButtonLogin aria-label="Boton para registrarte" role="button" onClick={handleRegister}>Registrarse</ButtonLogin>
                 </ButtonContainer>
 
             </ContainerLogin>

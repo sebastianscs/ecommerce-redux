@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import "reset-css";
-
+import cartImage from '../../assets/cart.svg';
 const HeaderContainer = styled.header`
     width: 100%;
     font-family: 'Lexend', Arial, sans-serif;
@@ -48,8 +48,18 @@ const NavContainer = styled.nav`
         color:#FFF;
     }
 `
+const ButtonCart = styled.button`
 
+    width: 50px;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    background-image: ${(props) => props.visible > 0 ? `url(${cartImage})`:'none'};
+
+    cursor: ${(props => props.visible > 0 ? 'pointer' : 'inherit')};
+`;
 export {
     HeaderContainer,
-    NavContainer
+    NavContainer,
+    ButtonCart
 }
