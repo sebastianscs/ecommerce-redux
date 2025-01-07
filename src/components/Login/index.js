@@ -30,27 +30,51 @@ const Login = () => {
         <>
             <ContainerLogin>
                 
-                <LabelLogin >Usuario</LabelLogin>
+                <LabelLogin 
+                    htmlFor='Usuario'
+                >
+                    Usuario
+                </LabelLogin>
                 <InputLogin 
                     placeholder='Usuario'
                     onChange={(e) => setUsername(e.target.value)}
                     name="username"
+                    id="username"
                     aria-label="Ingresar usuario"
                     value={username}
                     />
-                <LabelLogin >Contraseña</LabelLogin>
+                <LabelLogin 
+                    htmlFor='Contraseña'
+                >
+                    Contraseña
+                </LabelLogin>
                 <InputLogin 
                     placeholder='Contraseña' 
                     onChange={(e) => setPassword(e.target.value)}
                     name="password"
+                    id="password"
                     aria-label="Ingresar contraseña"
                     type="password"
                     value={password}
                     />
                 
                 <ButtonContainer>
-                    <ButtonLogin aria-label='Boton de inicio de sesion' role="button" onClick={handleLogin}>Iniciar Sesión :3</ButtonLogin>
-                    <ButtonLogin aria-label="Boton para registrarte" role="button" onClick={handleRegister}>Registrarse</ButtonLogin>
+                    <ButtonLogin 
+                        aria-label='Boton de inicio de sesion' 
+                        role="Boton"
+                        aria-roledescription="Iniciar Sesion" 
+                        onClick={handleLogin}
+                        >
+                            Iniciar Sesión :3
+                    </ButtonLogin>
+                    <ButtonLogin 
+                    aria-label="Boton para registrarte" 
+                    role="Boton"
+                    aria-roledescription="Registrarte"
+                    onClick={handleRegister}
+                    >
+                        Registrarse
+                    </ButtonLogin>
                 </ButtonContainer>
 
             </ContainerLogin>

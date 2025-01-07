@@ -5,7 +5,7 @@ const InputLogin = styled.input`
     width:300px;
     border-radius: 5px;
 `;
-const ContainerLogin = styled.article`
+const ContainerLogin = styled.form`
     
     display:flex;
     flex-direction:column;
